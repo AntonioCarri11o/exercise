@@ -30,7 +30,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=antoniocarri11o
-            -Dsonar.projectKey=main
+            -Dsonar.projectKey=exercise
   deploy:
     name: Deploy to AWS
     runs-on: ubuntu-latest
