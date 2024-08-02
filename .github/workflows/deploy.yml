@@ -27,6 +27,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GIT_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        with:
+          args: >
+            -Dsonar.organization=antoniocarri11o
+            -Dsonar.projectKey=exercise
   deploy:
     name: Deploy to AWS
     runs-on: ubuntu-latest
