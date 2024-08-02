@@ -17,14 +17,9 @@ lint = true
 capabilities = "CAPABILITY_IAM"
 confirm_changeset = true
 resolve_s3 = true
-s3_prefix = "exercise"
-region = "us-east-1"
-profile = ""
-disable_rollback = true
-image_repositories = []
 
 [default.package.parameters]
-resolve_s3 = false
+resolve_s3 = true
 
 [default.sync.parameters]
 watch = true
