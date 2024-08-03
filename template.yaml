@@ -63,6 +63,20 @@ Resources:
           Properties:
            Path: /vehicles
            Method: get
+  GetVehicleByIdFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: vehicle/get_vehicle_by_id/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        GetDataHero:
+          Type: Api
+          Properties:
+            Path: /get_vehicle_by_id
+            Method: get
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -76,6 +90,9 @@ Outputs:
   GetDataVehiclesFunction:
     Description: "Get Data Vehicles Function ARN"
     Value: !GetAtt GetDataVehiclesFunction.Arn
+  GetVehicleByIdFunction:
+    Description: "Get Data of One Vehicle Function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/get_vehicle_by_id"
   LambdaExecutionRoleArn:
     Description: "Lambda Execution Role ARN"
     Value: !GetAtt LambdaExecutionRole.Arn
