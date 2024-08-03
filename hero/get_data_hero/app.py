@@ -1,4 +1,3 @@
-import json
 try:
     from connection import get_connection, handle_response, handle_response_success
 except ImportError:

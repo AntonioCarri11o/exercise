@@ -48,6 +48,10 @@ jobs:
         run: |
           cd hero/get_data_hero
           pip install -r requirements.txt
+      - name: Install dependencies for get_data_vehicle
+        run: |
+          cd vehicle/get_data_vehicle
+          pip install -r requirements.txt
 
       - name: Install AWS CLI
         run: |
