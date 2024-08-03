@@ -14,7 +14,7 @@ def get_connection():
             host='exercise.cxukkquegvcb.us-east-1.rds.amazonaws.com',
             user='root',
             password='superroot',
-            database='heroes'
+            database='vehicles'
         )
     except Exception as e:
         raise e
