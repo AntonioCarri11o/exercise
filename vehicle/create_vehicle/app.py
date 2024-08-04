@@ -7,7 +7,6 @@ except ImportError:
 
 
 def lambda_handler(event, context):
-
     try:
         body = json.loads(event['body'])
     except (TypeError, KeyError, json.JSONDecodeError):
@@ -18,8 +17,10 @@ def lambda_handler(event, context):
     autonomia = body.get('autonomia')
     camara = body.get('camara')
 
-    if not marca or not modelo or not autonomia or not camara:
-        return handle_response(400, 'Faltan parámetros', None)
+    if not marca or not modelo or not autonomia or camara is None:
+        return handle_response(400,
+                               f"Faltan parámetros marca: {marca}, modelo: {modelo}, autonomia: {autonomia}, camara: {camara}",
+                               None)
 
     response = insert_vehicle(marca, modelo, autonomia, camara)
     return response
