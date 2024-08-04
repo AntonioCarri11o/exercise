@@ -24,7 +24,7 @@ def lambda_handler(event, context):
                     'autonomia': row[3],
                     'camara': row[4]
                 }
-            vehicles.append(vehicle)
+                vehicles.append(vehicle)
     finally:
         connection.close()
     return  handle_response_success(200, 'Exito', vehicles)

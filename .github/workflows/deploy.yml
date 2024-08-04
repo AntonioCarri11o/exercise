@@ -56,6 +56,10 @@ jobs:
         run: |
           cd vehicle/get_vehicle_by_id
           pip install -r requirements.txt
+      - name: Install dependencies for create_vehicle
+        run: |
+          cd vehicle/create_vehicle
+          pip install -r requirements.txt
       - name: Install AWS CLI
         run: |
           sudo apt-get update
