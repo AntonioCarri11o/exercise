@@ -6,7 +6,7 @@ except ImportError:
     from .connection import get_connection, handle_success, handle_response
 
 
-def lambda_handler(event):
+def lambda_handler(event, context):
 
     try:
         body = json.loads(event['body'])
