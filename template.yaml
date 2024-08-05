@@ -58,7 +58,7 @@ Resources:
       Architectures:
         - x86_64
       Events:
-        GetDataHero:
+        GetDataVehicle:
           Type: Api
           Properties:
            Path: /vehicles
@@ -72,10 +72,10 @@ Resources:
       Architectures:
         - x86_64
       Events:
-        GetDataHero:
+        GetDataVehicleById:
           Type: Api
           Properties:
-            Path: /get_vehicle_by_id
+            Path: /get_vehicle_by_id/
             Method: get
   CreateDataVehicleFunction:
     Type: AWS::Serverless::Function
@@ -89,8 +89,36 @@ Resources:
         CreateDataVehicle:
           Type: Api
           Properties:
-            Path: /create_vehicle
+            Path: /create_vehicle/
             Method: post
+  DeleteVehicleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: vehicle/delete_car/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        DeleteDataVehicle:
+          Type: Api
+          Properties:
+            Path: /delete_car/
+            Method: delete
+  UpdateDataVehicleFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: vehicle/update_vehicle/
+      Handler: app.lambda_handler
+      Runtime: python3.9
+      Architectures:
+        - x86_64
+      Events:
+        UpdateDataVehicle:
+          Type: Api
+          Properties:
+            Path: /update_vehicle/
+            Method: put
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
   # Find out more about other implicit resources you can reference within SAM
@@ -110,6 +138,12 @@ Outputs:
   CreateDataVehicleFunction:
     Description: "Insert data of vehicles"
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/create_vehicle"
+  DeleteVehicleFunction:
+    Description: "Insert data of vehicles"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/delete_car"
+  UpdateDataVehicleFunction:
+    Description: "Insert data of vehicles"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/update_vehicle"
   LambdaExecutionRoleArn:
     Description: "Lambda Execution Role ARN"
     Value: !GetAtt LambdaExecutionRole.Arn

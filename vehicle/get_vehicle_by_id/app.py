@@ -27,4 +27,4 @@ def lambda_handler(event, context):
                 vehicles.append(vehicle)
     finally:
         connection.close()
-    return  handle_response_success(200, 'Exito', vehicles)
+    return handle_response_success(200, 'Exito', vehicles)

@@ -60,6 +60,14 @@ jobs:
         run: |
           cd vehicle/create_vehicle
           pip install -r requirements.txt
+      - name: Install dependencies for delete_car
+        run: |
+          cd vehicle/delete_car
+          pip install -r requirements.txt
+      - name: Install dependencies for update_vehicle
+        run: |
+          cd vehicle/update_vehicle
+          pip install -r requirements.txt
       - name: Install AWS CLI
         run: |
           sudo apt-get update
