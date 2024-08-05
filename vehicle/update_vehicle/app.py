@@ -38,7 +38,7 @@ def update_vehicle(id, marca, modelo, autonomia, camara):
             result = cursor.fetchall()
             if len(result) == 0:
                 return handle_response(400, 'Id no encontrado', None)
-            update_query = """UPDATE vehicle SET marca = %s, modelo = %s, autonomia = %s, camara = %s WHERE id = $s"""
+            update_query = """UPDATE vehicle SET marca = %s, modelo = %s, autonomia = %s, camara = %s WHERE id = %s"""
             cursor.execute(update_query, (marca, modelo, autonomia, camara, id))
             connection.commit()
     except Exception as e:
