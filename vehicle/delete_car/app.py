@@ -24,4 +24,4 @@ def delete_vehicle(id):
         return handle_response(500, 'Ha habido un error al elimnar', e)
     finally:
         connection.close()
-    return handle_response(200, 'El vehiculo ha sido eliminado correctamente')
+    return handle_response(200, 'El vehiculo ha sido eliminado correctamente', None)
